@@ -109,3 +109,4 @@ models/autoencoder/production/*
 models/classifier/checkpoints/*
 models/classifier/production/*
 data/*
+!data/.keep
