@@ -33,14 +33,15 @@ cp_callback = ModelCheckpoint(filepath=conf.checkpoint_path, save_weights_only=T
 #load an existing model to continue training
 autoencoder.load_weights(conf.checkpoint_path)
 
+#run the model
 autoencoder.fit(x_data_train, x_data_train,
                 epochs=conf.epochs,
                 batch_size=conf.batch_size,
                 shuffle=True,
                 callbacks=[cp_callback])
-
+s
+#save production version of the model
 autoencoder.save(conf.final_model_path) 
-
 autoencoder.summary()   
 
 clean_images = autoencoder.predict(x_data_train)
