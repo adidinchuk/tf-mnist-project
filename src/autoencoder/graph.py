@@ -3,7 +3,7 @@ from keras.models import Model
 from keras.callbacks import ModelCheckpoint
 import sys
 import os
-sys.path.append(os.path.abspath("libs"))
+sys.path.append(os.path.abspath("src/libs"))
 from data import MNISTProcessor
 import visualizer as v
 import config as conf
