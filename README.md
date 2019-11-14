@@ -53,11 +53,14 @@ The code in this repo is used to create and train 2 seperate TensorFlow models a
 # clone and open repo
 git clone https://github.com/adidinchuk/tf-mnist-project
 cd tf-mnist-project
+
 # download the MNIST data
 curl http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz --output data/train-images-idx3-ubyte.gz
 curl http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz --output data/train-labels-idx1-ubyte.gz
 
-#### make sure to unzip the data using your prefer compression tool. Make sure the file names and location do not change, otherwise you will have to make the appropriate changes in the config files ####
+#### Unzip the data using your prefer compression tool. ###
+### Make sure the file names and location do not change, ###
+### otherwise you will have to make the appropriate changes in the config files ####
 
 # once the data has been extracted train the autoencoder model using
 py -3.6 src/autoencoder/graph.py
