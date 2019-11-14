@@ -1,5 +1,5 @@
 batch_size = 50
-epochs = 1
+epochs = 500
 data_path = '../../data'
 train_labels = '/train-labels.idx1-ubyte'
 train_images = '/train-images.idx3-ubyte'

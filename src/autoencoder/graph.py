@@ -8,9 +8,10 @@ from data import MNISTProcessor
 import visualizer as v
 import config as conf
 
+#load data
 data_processor = MNISTProcessor(conf.data_path, conf.train_labels, 
                                 conf.train_images, '', '')
-                                
+                               
 x_data_train, y_data_train = data_processor.load_train(normalize=True).get_training_data()
 
 #initialize the network
@@ -31,7 +32,7 @@ autoencoder.compile(optimizer='adadelta', loss='MSE')
 cp_callback = ModelCheckpoint(filepath=conf.checkpoint_path, save_weights_only=True, verbose=1)
 
 #load an existing model to continue training
-autoencoder.load_weights(conf.checkpoint_path)
+#autoencoder.load_weights(conf.checkpoint_path)
 
 #run the model
 autoencoder.fit(x_data_train, x_data_train,
@@ -39,11 +40,11 @@ autoencoder.fit(x_data_train, x_data_train,
                 batch_size=conf.batch_size,
                 shuffle=True,
                 callbacks=[cp_callback])
-s
+
 #save production version of the model
 autoencoder.save(conf.final_model_path) 
 autoencoder.summary()   
 
+# run a sample for visualization
 clean_images = autoencoder.predict(x_data_train)
-
 v.visualize_autoencoding(x_data_train, clean_images, digits_to_show=10)

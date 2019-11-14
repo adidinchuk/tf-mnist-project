@@ -12,9 +12,8 @@ import config as conf
 data_processor = MNISTProcessor(conf.data_path, conf.train_labels, 
                                 conf.train_images, '', '')
 x_data_train, y_data_train = data_processor.load_train(normalize=True).get_training_data()
-x_data_test, y_data_test = data_processor.load_train(normalize=True).get_testing_data()
 
-# Recreate the exact same model, including its weights and process images
+# Load the autoencoder model, including its weights and then process images
 autoencoder = Keras.models.load_model(conf.autoencoder_model_path)
 clean_images = autoencoder.predict(x_data_train)
 
@@ -34,12 +33,13 @@ cp_callback = ModelCheckpoint(filepath=conf.checkpoint_path, save_weights_only=T
 #load an existing model to continue training
 #classifier.load_weights(conf.checkpoint_path)
 
+#run the model
 classifier.fit(x_data_train, y_data_train,
                 epochs=conf.epochs,
                 batch_size=conf.batch_size,
                 shuffle=True,
                 callbacks=[cp_callback])
 
+#save production version of the model
 classifier.save(conf.final_model_path) 
-
 classifier.summary()  
