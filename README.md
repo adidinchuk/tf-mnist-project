@@ -6,6 +6,7 @@ TensorFlow neural network implementation and training for classifying MNIST hand
 ## Requirements
 These are package versions the code was developed and tested on, it might work with earlier versions.
 ```python
+python >= 3.6.4
 h5py >= 2.9.0
 keras >= 2.3.1
 mlxtend >= 0.17.0
