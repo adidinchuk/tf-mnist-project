@@ -3,7 +3,6 @@ import matplotlib.pyplot as plt
 
 
 def visualize_autoencoding(original_data, decoded_data, digits_to_show=10):
-    n = 10  # how many digits we will display
     plt.figure(figsize=(20, 4))
     for i in range(digits_to_show):
         # display original
