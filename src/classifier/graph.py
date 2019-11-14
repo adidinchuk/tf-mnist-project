@@ -4,7 +4,7 @@ import keras as Keras
 from keras.callbacks import ModelCheckpoint
 import sys
 import os
-sys.path.append(os.path.abspath("../libs"))
+sys.path.append(os.path.abspath("libs"))
 from data import MNISTProcessor
 import config as conf
 
