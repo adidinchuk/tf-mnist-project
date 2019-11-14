@@ -108,5 +108,9 @@ models/autoencoder/checkpoints/*
 models/autoencoder/production/*
 models/classifier/checkpoints/*
 models/classifier/production/*
+!models/autoencoder/checkpoints/.keep
+!models/autoencoder/production/.keep
+!models/classifier/checkpoints/.keep
+!models/classifier/production/.keep
 data/*
 !data/.keep
