@@ -41,14 +41,14 @@ class MNISTProcessor:
         self.test_images = test_images
         self.data_wrapper = DataWrapper()
     
-    def load_train(self, binarize=True, normalize=True):
+    def load_train(self, one_hot=True, normalize=True):
         print('Loading training data.')
         images, labels = loadlocal_mnist(images_path=self.file_path + self.train_images, labels_path=self.file_path + self.train_labels)
         if normalize:
             print('Normalizing images.')
             images = np.true_divide(images, 255)
-        if binarize:
-            print('Binarizing labels.')
+        if one_hot:
+            print('Converting labels to one-hot.')
             labels = self.transform_labels(labels)
         print('Image shape: ' + str(images[0].shape) + ' Label shape: ' + str(labels[0].shape))        
         self.data_wrapper.set_training_inputs(images)
