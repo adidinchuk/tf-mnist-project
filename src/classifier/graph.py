@@ -27,7 +27,7 @@ x_data_train, y_data_train = data_processor.load_train(normalize=True).get_train
 autoencoder = Keras.models.load_model(conf.autoencoder_model_path + '/' +  str(FLAGS.encoder_version))
 
 clean_images = autoencoder.predict(x_data_train)
-print(repr(clean_images[0]))
+
 #initialize the classification network
 input_layer = Input(shape=(784,))
 network = Dense(80, activation='tanh', name='dense_1')(input_layer)
