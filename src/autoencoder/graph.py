@@ -27,7 +27,7 @@ input_layer = Input(shape=(784,), name='input')
 network = Dense(152, activation='tanh', name='dense_1')(input_layer)
 network = Dense(76, activation='tanh', name='dense_2')(network)
 network = Dense(38, activation='tanh', name='dense_3')(network)
-network = Dense(2, activation='tanh', name='dense_4')(network)
+network = Dense(4, activation='tanh', name='dense_4')(network)
 network = Dense(38, activation='tanh', name='dense_5')(network)
 network = Dense(76, activation='tanh', name='dense_6')(network)
 network = Dense(152, activation='tanh', name='dense_7')(network)
@@ -57,9 +57,9 @@ autoencoder.fit(x_data_train, x_data_train,
 try:
     os.mkdir(conf.final_model_path + '/' + str(FLAGS.model_version))
 except OSError:
-    print ("Creation of the directory %s failed" % conf.final_model_path + '/' + str(FLAGS.model_version))
-else:    
-    autoencoder.save(conf.final_model_path + '/' + str(FLAGS.model_version), overwrite=True, save_format='tf') 
+    print ("Creation of the directory %s failed" % (conf.final_model_path + '/' + str(FLAGS.model_version)))
+  
+autoencoder.save(conf.final_model_path + '/' + str(FLAGS.model_version), overwrite=True, save_format='tf') 
 
 autoencoder.summary()   
 

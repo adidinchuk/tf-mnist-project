@@ -1,5 +1,5 @@
 batch_size = 50
-epochs = 100
+epochs = 1
 version = 1
 
 lib_folder = "src/libs"
@@ -11,4 +11,4 @@ train_images = '/train-images.idx3-ubyte'
 autoencoder_model_path = "models/autoencoder/production/"
 
 checkpoint_path = "models/classifier/checkpoints/checkpoint"
-final_model_path = "models/classifier/production/model.pb"
+final_model_path = "models/classifier/production"

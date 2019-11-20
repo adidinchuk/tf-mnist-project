@@ -25,14 +25,13 @@ x_data_train, y_data_train = data_processor.load_train(normalize=True).get_train
 
 # Load the autoencoder model, including its weights and then process images
 autoencoder = Keras.models.load_model(conf.autoencoder_model_path + '/' +  str(FLAGS.encoder_version))
-
 clean_images = autoencoder.predict(x_data_train)
 
 #initialize the classification network
 input_layer = Input(shape=(784,))
-network = Dense(80, activation='tanh', name='dense_1')(input_layer)
-network = Dense(40, activation='tanh', name='dense_2')(network)
-network = Dense(20, activation='tanh', name='dense_3')(network)
+network = Dense(140, activation='tanh', name='dense_1')(input_layer)
+network = Dense(80, activation='tanh', name='dense_2')(network)
+network = Dense(40, activation='tanh', name='dense_3')(network)
 output = Dense(10, activation='tanh', name='dense_4')(network)
 
 classifier = Model(inputs=input_layer, outputs=output, name='classifier')
@@ -49,7 +48,7 @@ if(not FLAGS.rebuild):
         print('No checkpoint found, building filters from scratch.')
 
 #run the model
-classifier.fit(x_data_train, y_data_train,
+classifier.fit(clean_images, y_data_train,
                 epochs=conf.epochs,
                 batch_size=conf.batch_size,
                 shuffle=True,
@@ -60,7 +59,9 @@ try:
     os.mkdir(conf.final_model_path + '/' + str(FLAGS.model_version))
 except OSError:
     print ("Creation of the directory %s failed" % conf.final_model_path + '/' + str(FLAGS.model_version))
-else:    
-    autoencoder.save(conf.final_model_path + '/' + str(FLAGS.model_version), overwrite=True, save_format='tf') 
+  
+classifier.save(conf.final_model_path + '/' + str(FLAGS.model_version), overwrite=True, save_format='tf') 
 
 classifier.summary()  
+
+

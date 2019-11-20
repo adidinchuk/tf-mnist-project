@@ -1,5 +1,5 @@
 batch_size = 50
-epochs = 500
+epochs = 1
 version = 1
 
 lib_folder = "src/libs"
